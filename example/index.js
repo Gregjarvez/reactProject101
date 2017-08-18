@@ -1,0 +1,1 @@
+import React from "react";import { render } from 'react-dom';import FlickrGallery from '../src/components/gallery/gallery';import config from "../config/flickr.json";render(    <FlickrGallery        title="Photos"        flickrConfig={config}        paginationOffset={2}    />,    document.getElementById('root'));

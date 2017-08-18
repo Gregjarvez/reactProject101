@@ -1,0 +1,18 @@
+.c-pagination {
+  text-align: right;
+  width: 100%;
+  color: $white;
+}
+
+.c-pagination__item {
+  display: inline-block;
+}
+
+.c-pagination__button {
+  background: transparent;
+  border: 0;
+}
+
+.c-pagination__button--current {
+  color: $maincolor-02;
+}

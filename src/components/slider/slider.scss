@@ -1,0 +1,101 @@
+.c-slider__slide {
+  border-bottom: 3px solid $white;
+  position: relative;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.c-slider__slide--large-photo {
+  width: 100%;
+}
+
+.c-slider__arrow {
+  position: absolute;
+  top: 40%;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: $black;
+  opacity: 0.7;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 40%;
+    background-color: $white;
+  }
+
+  &:before {
+    bottom: 12px;
+  }
+
+  &:after {
+    top: 12px;
+  }
+
+  &--left {
+    left: 0.5em;
+
+    &:before {
+      transform: rotate(-40deg);
+      left: 35%;
+    }
+
+    &:after {
+      transform: rotate(40deg);
+      left: 35%;
+    }
+  }
+
+  &--right {
+    right: 0.5em;
+
+    &:before {
+      transform: rotate(40deg);
+      right: 35%;
+    }
+
+    &:after {
+      transform: rotate(-40deg);
+      right: 35%;
+    }
+  }
+}
+
+.c-slider__thumbnails {
+  margin: 0;
+}
+
+.c-slider__thumbnail {
+  display: inline-block;
+  margin-bottom: 8px;
+  width: calc(20% - 4px);
+}
+
+.c-slider__photo {
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+
+  &:hover,
+  &:focus,
+  &--selected {
+    border-color: $maincolor-02;
+    opacity: 0.7;
+  }
+}
+

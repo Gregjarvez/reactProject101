@@ -1,0 +1,16 @@
+$svg-path: '../app/resources/svg/';
+
+.i-svg {
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.i-svg-25 {
+  width: 25px;
+  height: 25px;
+  background-size: 25px;
+}
+
+.i-svg__arrow-down {
+  background-image: url($svg-path + 'icn_arrow_down_dark.svg');
+}
