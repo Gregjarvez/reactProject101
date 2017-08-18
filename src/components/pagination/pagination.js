@@ -1,57 +1,1 @@
-import paginationService from 'services/pagination/pagination';
-
-const defaultOffset = 2;
-const firstPage = 1;
-
-export default (props) => {
-    let { offset, pages, page, onPageChanged } = props;
-    offset = offset || defaultOffset;
-
-    const pagesList = paginationService.getRange(page, pages, offset);
-
-    return (
-        <nav className="c-pagination">
-            <ol>
-                <li className="c-pagination__item">
-                    <button
-                        disabled={page === firstPage}
-                        className="c-pagination__button"
-                        onClick={() => onPageChanged(firstPage)}
-                    >&lt;&lt;</button>
-                </li>
-                <li className="c-pagination__item">
-                    <button
-                        disabled={page === firstPage}
-                        className="c-pagination__button"
-                        onClick={() => onPageChanged(page - 1)}
-                    >&lt;</button>
-                </li>
-                {
-                    pagesList.map((item, i) => {
-                        return <li className="c-pagination__item" key={i}>
-                            <button
-                                disabled={item === '...'}
-                                className={`c-pagination__button${item === page ? ' c-pagination__button--current' : ''}`}
-                                onClick={() => onPageChanged(item)}
-                            >{ item }</button>
-                        </li>
-                    })
-                }
-                <li className="c-pagination__item">
-                    <button
-                        disabled={page === pages}
-                        className="c-pagination__button"
-                        onClick={() => onPageChanged(page + 1)}
-                    >&gt;</button>
-                </li>
-                <li className="c-pagination__item">
-                    <button
-                        disabled={page === pages}
-                        className="c-pagination__button"
-                        onClick={() => onPageChanged(pages)}
-                    >&gt;&gt;</button>
-                </li>
-            </ol>
-        </nav>
-    );
-};
+import paginationService from 'services/pagination/pagination';import React from 'react';const defaultOffset = 2;const firstPage = 1;const PaginationItem = props => {  const {    disabled,    onPageChanged,    pageEval,    character,  } = props.config  return (    <li className="c-pagination__item">      <button        disabled={ disabled }        className="c-pagination__button"        onClick={ () => onPageChanged(pageEval) }      >{character === 1 ? "<<" : ">>"}      </button>    </li>  )}export default ( props ) => {  let pagesList, itemConfig;  let { offset, pages, page, onPageChanged } = props;  offset = offset || defaultOffset;  pagesList = paginationService.getRange(page, pages, offset);  itemConfig = {    firstItem: {      disabled     : (page === firstPage),      pageEval: firstPage,      onPageChanged: onPageChanged,      character: 1    },    secondItem: {      disabled     : (page === firstPage),      pageEval: page - 1,      onPageChanged: onPageChanged,      character: 0    }  }  return (    <nav className="c-pagination">      <ol>        <PaginationItem config={ itemConfig.firstItem }/>        <PaginationItem config={ itemConfig.secondItem }/>        {          pagesList.map(( item, i ) => {            return <li className="c-pagination__item" key={ i }>              <button                disabled={ item === '...' }                className={ `c-pagination__button${item === page ? ' c-pagination__button--current' : ''}` }                onClick={ () => onPageChanged(item) }              >{ item }</button>            </li>          })        }        <li className="c-pagination__item">          <button            disabled={ page === pages }            className="c-pagination__button"            onClick={ () => onPageChanged(page + 1) }          >&gt;</button>        </li>        <li className="c-pagination__item">          <button            disabled={ page === pages }            className="c-pagination__button"            onClick={ () => onPageChanged(pages) }          >&gt;&gt;</button>        </li>      </ol>    </nav>  );};

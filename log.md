@@ -1,1 +1,0 @@
-1.Retrieved an api key from Flickr2. fixed all the file imports to begin with. Hardest task of them all ":)"3.change unsemantic variable names p r in gallery.js to communicate a bit more
