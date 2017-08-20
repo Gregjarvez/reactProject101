@@ -1,72 +1,1 @@
-import React from "react"
-import flickr from 'services/flickr/flickr';
-import Pagination from '../pagination/pagination';
-import Tooltip from '../tooltip/tooltip';
-import PhotoFrame from './sliderComponents/photoFrame';
-
-const Slider = ( props ) => {
-
-  const { photo, page, pages, selected, params = {} } = props
-
-  let imageList = photo.map(( photo, index ) => {
-    return (
-      <li className="c-slider__thumbnail" key={ photo.id }>
-        <PhotoFrame
-          _classname={ `c-slider__photo${ selected === index ? ' c-slider__photo--selected' : '' }` }
-          _currentPhotoUrl={ flickr.getThumbUrl(props.photo[ index ]) }
-          _onClick={ props.onSelectImage }
-          _index={ index }
-        />
-      </li>
-    )
-  })
-
-
-  return (
-    <div className="c-slider">
-      <div className="c-slider__slide">
-        {
-          photo.length > 0 &&
-          <PhotoFrame
-            _classname="c-slider__slide--large-photo"
-            _currentPhotoUrl={ flickr.getPhotoUrl(props.photo[ props.selected ]) }/>
-        }
-        <button
-          className="c-slider__arrow c-slider__arrow--left"
-          onClick={ () => props.onSelectImage(selected - 1) }
-          disabled={ page === 1 && selected === 0 }
-        >
-          <span className="u-visually-hidden">Previous photo</span>
-        </button>
-        <button
-          className="c-slider__arrow c-slider__arrow--right"
-          onClick={ () => props.onSelectImage(selected + 1) }
-          disabled={ page === pages && selected === params.per_page }
-        >
-          <span className="u-visually-hidden">Next photo</span>
-        </button>
-      </div>
-      <nav className="u-text-align--right">
-        <Tooltip
-          onToggle={ props.onToogleTooltip }
-          buttonText="Share"
-          open={ props.tooltipOpen }
-        >
-          <img width="200" src="https://blog.po.st/wp-content/uploads/2013/11/Custom-Buttons-Circle.png" alt=""/>
-        </Tooltip>
-      </nav>
-      <ul className="u-align--container-grid">
-        { imageList }
-      </ul>
-      <Pagination
-        onPageChanged={ props.paginationOnPageChange }
-        offset={ props.paginationOffset }
-        pages={ pages }
-        page={ page }
-      />
-    </div>
-  );
-
-}
-
-export default Slider;
+import React, { PropTypes } from "react"import flickr from 'services/flickr/flickr';import Pagination from '../pagination/pagination';import Tooltip from '../tooltip/tooltip';import PhotoFrame from './sliderComponents/photoFrame';const Slider = ( props ) => {  const { photo, page, pages, selected, params = {} } = props  let imageList = photo.map(( photo, index ) => {    return (      <li className="c-slider__thumbnail" key={ photo.id }>        <PhotoFrame          _classname={ `c-slider__photo${ selected === index ? ' c-slider__photo--selected' : '' }` }          _currentPhotoUrl={ flickr.getThumbUrl(props.photo[ index ]) }          _onClick={ props.onSelectImage }          _index={ index }        />      </li>    )  })  return (    <div className="c-slider">      <div className="c-slider__slide">        {          photo.length > 0 &&          <PhotoFrame            _classname="c-slider__slide--large-photo"            _currentPhotoUrl={ flickr.getPhotoUrl(props.photo[ props.selected ]) }/>        }        <button          className="c-slider__arrow c-slider__arrow--left"          onClick={ () => props.onSelectImage(selected - 1) }          disabled={ page === 1 && selected === 0 }        >          <span className="u-visually-hidden">Previous photo</span>        </button>        <button          className="c-slider__arrow c-slider__arrow--right"          onClick={ () => props.onSelectImage(selected + 1) }          disabled={ page === pages && selected === params.per_page }        >          <span className="u-visually-hidden">Next photo</span>        </button>      </div>      <Tooltip        onToggle={ props.onToogleTooltip }        buttonText="Share"        open={ props.tooltipOpen }      >        <img width="200" src="https://blog.po.st/wp-content/uploads/2013/11/Custom-Buttons-Circle.png" alt=""/>      </Tooltip>      <ul className="u-align--container-grid">        { imageList }      </ul>      <Pagination        onPageChanged={ props.paginationOnPageChange }        offset={ props.paginationOffset }        pages={ pages }        page={ page }      />    </div>  );}Slider.propTypes = {  onToogleTooltip       : PropTypes.func.isRequired,  paginationOnPageChange: PropTypes.func.isRequired,  onSelectImage         : PropTypes.func.isRequired,  paginationOffset      : PropTypes.number.isRequired,  state                 : PropTypes.shape({    photo   : PropTypes.array,    page    : PropTypes.number,    pages   : PropTypes.number,    selected: PropTypes.number  })}export default Slider;
