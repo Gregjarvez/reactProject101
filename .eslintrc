@@ -1,49 +1,1 @@
-{
-  "env": {
-    "browser": true,
-    "node": true,
-    "jasmine": true,
-    "jest": true,
-    "es6": true
-  },
-  "globals": {
-    "__DEV__": true
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true,
-      "spread" : true,
-      "restParams" : true
-    }
-  },
-  "extends": "eslint:recommended",
-  "rules": {
-    "no-console": [2, { "allow": ["warn", "error"] }],
-    "react/jsx-uses-react": 2,
-    "react/jsx-uses-vars": 2,
-    "react/react-in-jsx-scope": 2,
-    "react/no-deprecated": 2,
-    "react/no-find-dom-node": 2,
-    "react/no-is-mounted": 2,
-    "react/no-multi-comp": 2,
-    "react/no-unknown-property": 2,
-    "react/no-unescaped-entities": 2,
-    "react/no-render-return-value": 2,
-    "react/no-did-mount-set-state": 2,
-    "react/no-did-update-set-state": 2,
-    "react/no-unused-prop-types": 1,
-    "react/prefer-stateless-function": 1,
-    "react/prop-types": 1,
-    "react/sort-comp": 1,
-    "react/void-dom-elements-no-children": 2,
-    "react/jsx-no-bind": 1,
-    "react/jsx-no-undef": 1
-  },
-  "plugins": [
-    "react"
-  ]
-}
+{  "env": {    "browser": true,    "node": true,    "jasmine": true,    "jest": true,    "es6": true  },  "globals": {    "__DEV__": true  },  "parser": "babel-eslint",  "parserOptions": {    "ecmaVersion": 6,    "sourceType": "module",    "ecmaFeatures": {      "jsx": true,      "modules": true,      "spread" : true,      "restParams" : true    }  },  "extends": "eslint:recommended",  "rules": {    "no-console": [2, { "allow": ["warn", "error"] }],    "react/jsx-uses-react": 2,    "react/jsx-uses-vars": 2,    "react/react-in-jsx-scope": 2,    "react/no-deprecated": 2,    "react/no-find-dom-node": 2,    "react/no-is-mounted": 2,    "react/no-multi-comp": 2,    "react/no-unknown-property": 2,    "react/no-unescaped-entities": 2,    "react/no-render-return-value": 2,    "react/no-did-mount-set-state": 2,    "react/no-did-update-set-state": 2,    "react/no-unused-prop-types": 1,    "react/prefer-stateless-function": 1,    "react/prop-types": 1,    "react/sort-comp": 1,    "react/void-dom-elements-no-children": 2,    "react/jsx-no-bind": 1,    "react/jsx-no-undef": 1  },  "plugins": [    "react"  ]}

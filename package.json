@@ -36,6 +36,7 @@
     "postcss-cli": "2.5.2",
     "postcss-loader": "0.9.1",
     "postcss-url": "5.1.2",
+    "prop-types": "15.5.10",
     "raw-loader": "0.5.1",
     "react": "15.3.2",
     "react-dom": "15.3.2",
