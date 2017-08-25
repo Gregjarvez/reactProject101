@@ -81,7 +81,7 @@ module.exports = function (test, production) {
         include: [
             process.cwd() + '/config'
         ],
-        loader: 'json-loader'
+        loader: 'json'
     };
 
     return [
